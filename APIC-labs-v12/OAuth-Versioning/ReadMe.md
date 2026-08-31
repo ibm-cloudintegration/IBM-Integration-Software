@@ -4,64 +4,32 @@
 
 [Return to main APIC lab page](../ReadMe.md#lab-abstracts)
 
-Lab prerequisite: "The Developer Portal Experience"
+Lab prerequisite: "Create and Secure an API with DataPower API Gateway"
 
 ---
 
 # Table of Contents
+
 - [1. Introduction](#introduction)
-
-- [2. Configure a New OAuth 2.0 Provider API](#configure_oauth)
+- [2. Configure OAuth Security](#configure_oauth)
 	* [2a. Configure Authentication URL User Registry](#configure_registry)
-
 - [3. Create an OAuth Service](#create_oauth_service)
-
 - [4. Add the OAuth Service to the Sandbox Catalog](#add_service)
-
-- [5. Create a New Version of the Customer API](#new_version)
-	* [5a. Add OAuth Security to the Customer API](#oauth_customer)
-
-- [6. Create a New Product](#create_product)
-
-- [7. Stage the Product to your API Manager Environment](#stage_product)
-
-- [8. Supersede Version 1.0.0 of the Product](#supersede)
-
-- [9. Test the OAuth Configuration](#test_oauth)
+- [5. Update customer-database-agw API](#update-api)
+	* [5a. Add OAuth Security](#oauth_customer)
+- [6. Publish API](#publish-api)
+- [7. Test OAUTH Security](#test_oauth)
+- [8. Test the OAuth Configuration](#test_oauth)
 
 ---
 
 # 1. Introduction <a name="introduction"></a>
 
-In this lab, we will secure the Customer Database API that was created in the "Create and Secure an API to Proxy an Existing REST Web Service" lab to protect the resources exposed by IBM API Connect. Consumers of our API will be required to obtain and provide a valid OAuth token before they can invoke the Customer Database API. In order for the changes to take effect, we must publish the APIs to the Developer Portal and make them available for the API Consumers.  The Customer 1.0.0 version is already running and has active subscribers.
+In this lab, we will secure the Customer Database API that was created in the "Create and Secure an API with DataPower API Gateway" lab to protect the resources exposed by IBM API Connect. Consumers of our API will be required to obtain and provide a valid OAuth token before they can invoke the Customer Database API. 
 
-API lifecycle management capabilities is an essential part of the API Management platform. The API lifecycle includes the following stages:
+**Pre-Requisite:** Finish **Create and Secure an API with DataPower API Gateway** before this. <br>
 
-1.  Plan and design the API
-
-2.  Develop the API
-
-3.  Test the API
-
-4.  Deploy (publish) the API
-
-5.  Retire and deprecate the API
-
-In this tutorial, you will explore the following key capabilities:
-
--   Configure an OAuth 2.0 service (the Resource Owner Password grant type)
-
--   Clone a new version of an API
-
--   Secure the new version of your API
-
--   Create a new API Product
-
--   Replace the old Product
-
--   Test the OAuth API in the Developer Portal
-
-# 2. Configure a New OAuth 2.0 Provider API <a name="configure_oauth"></a>
+# 2. Configure OAuth Security <a name="configure_oauth"></a>
 
 IBM API Connect is a full-featured OAuth 2.0 provider. The OAuth exchange works like any other API call, and thus we treat it as its own API.
 
@@ -69,547 +37,282 @@ In this section, you will create a new OAuth provider API, configure which grant
 
 # 2a. Configure Authentication URL User Registry <a name="configure_registry"></a>
 
-In order to configure user authentication, you must first define the registry to use, which may be LDAP, local user registry, or an authentication URL. For this lab, you will implement an Authentication
+In order to configure user authentication, you must first define the **Registry** to use, which may be **LDAP**, **local user registry**, or an **authentication URL**. For this lab, you will implement an Authentication
 URL.
 
 1\.If you're not logged before, follow these instructions to access to the API Manager -> [Login to the API Manager](../APIC-prereq/Login-apic/index.md)
 
 2\. In the left menu, click on **Resources**.  As you hover over the icon, you will see the item name.
 
-![alt text][pic9]
+![alt text](./images/image.png)
 
 3\. Make sure **User registries** is selected and click **Create**.
 
-![alt text][pic10]
+![alt text](./images/image-1.png)
 
 4\. Click on **Authentication URL user registry**.
 
-![alt text][pic11]
+![alt text](./images/image-2.png)
 
-5\. Enter **App Registry** for the **Title**, **https://httpbin.org/basic-auth/student(n)/passw0rd** for the **Url**, and **App Registry** for the **Display name**.  Click **Save**.<br>
+
+5\. Enter **Student(n) App Registry** for the **Title**, **https://httpbin.org/basic-auth/student(n)/passw0rd** for the **Url**, and **App Registry** for the **Display name**.  Click **Save**.<br>
 Note: Make sure to replace student(n) with your student number. Example student1 <br>
 
-![alt text][pic12]
+![alt text](./images/image-3.png)
 
-[pic0]: images/0.png
-[pic1]: images/1.png
-[pic2]: images/2.png
-[pic3]: images/3.png
-[pic4]: images/4.png
-[pic5]: images/5.png
-[pic6]: images/6.png
-[pic7]: images/7.png
-[pic8]: images/8.png
-[pic9]: images/9.png
-[pic10]: images/10.png
-[pic11]: images/11.png
-[pic12]: images/12.png
 
 # 3. Create an OAuth Service <a name="create_oauth_service"></a>
 
-1\. You should still be in **Resources**.  If not, in the left menu, click **Resources**.
+1\. You should still be in **Resources**.  If not, in the left menu, click **Resources**. Click on **OAuth providers**. <br>
 
-![alt text][pic13]
+![alt text](./images/image-5.png)
 
-2\. Click on **OAuth providers**.
 
-![alt text][pic14]
+2\. Click **Add** and select **Native OAuth provider** from the drop down.
 
-3\. Click **Add** and select **Native OAuth provider** from the drop down.
+![alt text](./images/image-6.png)
 
-![alt text][pic15]
 
-![alt text][pic16]
+3\. Enter **student(n)-oauth** for the **Title** and select **DataPower API Gateway** for the **Gateway Type**.  Click **Next**.
 
-4\. Enter **oauth** for the **Title** and select **DataPower API Gateway** for the **Gateway Type**.  Click **Next**.
+![alt text](./images/image-7.png)
 
-![alt text][pic17]
 
-5\. The Configuration screen will show the default Authorize and Token paths.  For **Supported grant types**, select **Resource owner - Password** and deselect **Access code**.  For **Supported client types**, select **Confidential**.  Click **Next**.
+4\. The Configuration screen will show the default Authorize and Token paths.  For **Supported grant types**, select **Resource owner - Password** and deselect **Access code**.  For **Supported client types**, select **Confidential**.  Click **Next**.
 
-![alt text][pic18]
+![alt text](./images/image-8.png)
 
-6\. One scope, **sample&#95;scope&#95;1**, is automatically created.  
 
-![alt text][pic19]
+5\. One scope, **sample&#95;scope&#95;1**, is automatically created.  
 
-7\. Replace **sample&#95;scope&#95;1** with **customer** for Scope **Name** and replace **Sample scope definition 1** with **Access to Customer API** for Scope **Description**.  Click **Next**.
 
-![alt text][pic20]
+![alt text](./images/image-9.png)
 
-8\. Accept the defaults (**App Registry** for **Authenticate application users using**) and click **Next**.
+6\. Replace **sample&#95;scope&#95;1** with **customer** for Scope **Name** and replace **Sample scope definition 1** with **Access to Customer API** for Scope **Description**.  Click **Next**.
 
-![alt text][pic21]
+![alt text](./images/image-9a.png)
 
-9\. Review the OAuth configuration and click **Finish**.
+7\. Accept the defaults (**App Registry** for **Authenticate application users using**) and click **Next**.
 
-![alt text][pic22]
+![alt text](./images/image-9b.png)
 
-10\. Click **Save**.
+8\. Review the OAuth configuration and click **Finish**.
 
-![alt text][pic68]
+![alt text](./images/image-9c.png)
 
-[pic13]: images/13.png
-[pic14]: images/14.png
-[pic15]: images/15.png
-[pic16]: images/16.png
-[pic17]: images/17.png
-[pic18]: images/18.png
-[pic19]: images/19.png
-[pic20]: images/20.png
-[pic21]: images/21.png
-[pic22]: images/22.png
-[pic68]: images/68.png
+
+9\. Click **Save**.
+
+![alt text](./images/image-10.png)
+
 
 # 4. Add the OAuth Service to the Sandbox Catalog <a name="add_service"></a>
 
 1\. In the left menu, click on **Manage**.
 
-![alt text][pic23]
+![alt text](./images/image-11.png)
+
 
 2\. Click on **Sandbox**
 
-![alt text][pic24]
+![alt text](./images/image-12.png)
 
 3\. In the top menu, click on **Catalog settings**.
 
-![alt text][pic25]
+![alt text](./images/image-13.png)
+
 
 4\. Click on **API user registries**.
 
-![alt text][pic26]
+![alt text](./images/image-14.png)
+
 
 5\. Click **Edit**.
 
-![alt text][pic27]
+![alt text](./images/image-15.png)
 
-6\. Select **App Registry** and click **Save**.
 
-![alt text][pic28]
+6\. Select **Student(n) App Registry** and click **Save**.
+
+![alt text](./images/image-16.png)
+
 
 7\. Click on **OAuth providers**.
 
-![alt text][pic29]
+![alt text](./images/image-17.png)
 
 8\. Click **Edit**
 
-![alt text][pic30]
+![alt text](./images/image-18.png)
 
-9\. Select **oauth** and click **Save**.
 
-![alt text][pic31]
+9\. Select **student1-oauth** and click **Save**.
 
-[pic23]: images/23.png
-[pic24]: images/24.png
-[pic25]: images/25.png
-[pic26]: images/26.png
-[pic27]: images/27.png
-[pic28]: images/28.png
-[pic29]: images/29.png
-[pic30]: images/30.png
-[pic31]: images/31.png
+![alt text](./images/image-19.png)
 
-# 5. Create a New Version of the Customer API <a name="new_version"></a>
 
-IBM API Connect supports multiple versions of APIs.  We will create a new version of the Customer API before making any changes that would break functionality for existing consumers. 
+# 5. Update customer-database-agw API <a name="update_api"></a>
 
-First, we will save the API as a new version.
+1\. In the left menu, click on **API Studio**.
 
-1\. In the left menu, click on **Develop**.
+![alt text](./images/image-20.png)
 
-![alt text][pic32]
+Select customer-database-agw project. <br>
 
-2\. Confirm the **APIs** tab is selected and click on the **3-dot** menu next to **Customer Database** and select **Save as New Version** from the drop down menu.
+![alt text](./images/image-21.png)
 
-![alt text][pic33]
+Click on your API, customer-database-agw. <br>
 
-3\. Enter **2.0.0** for the **Save as New Version** and click **Submit**.
+![alt text](./images/image-22.png)
 
-![alt text][pic34]
+Scoll down to Components section, then click on \<Add a new security schema\>. <br>
 
-## 5a. Add OAuth Security to the Customer API <a name="oauth_customer"></a>
+![alt text](./images/image-23.png)
 
-We will modify the security policy for our new API version to tell it to use the OAuth 2.0 provider.
 
-1\. Confirm the **APIs** tab is selected and click on version **2.0.0** of **Customer Database**.
+## 5a. Add OAuth Security <a name="oauth_customer"></a>
 
-![alt text][pic35]
+1\. Select oauth-2, then enter Security schema key as **oauth-1**.
 
-2\. Click on the **+** next to **Security Schemes**.
+![alt text](./images/image-24.png)
 
-![alt text][pic36]
+Click \<Add\>. <br>
 
-3\. Enter **oauth-1** for the **Security Definition Name (Key)** and select **oauth2** from the **Security Definition Type** drop down menu.  When you select oauth2 from the drop down menu, it will enable additional configuration options.
+2\. For the **"Catalog"** select **Sandbox**, for the **"OAuth Provider"** select **student1-oauth**, for the **Scope" select **"Resource Owner - Password"**. <br>
 
-![alt text][pic37]
+![alt text](./images/image-25.png)
 
-4\.Select **Resource Owner - Password** from the **Flow** drop down menu and click **Create**.
+Scroll down, and you should see the **"customer"** scope, and it should select automatically. <br>
 
-![alt text][pic38]
+![alt text](./images/image-26.png)
 
-5\. Click **Save**.
 
-![alt text][pic69]
+3\. Add **oauth-1** to the API Security. Click **\<Security\>** tab.
 
-Once saved, you will see an indicator window appear that shows that **Your API has been updated**.  Click on the **X** to close the window.
+![alt text](./images/image-27.png)
 
-![alt text][pic70]
+Click **\<Add security schema\>**. <br>
+![alt text](./images/image-28.png)
 
-6\. In the **Design** tab, find the **Security** section.  You will likely have to scroll up.  Expand the **Security** section clicking on the + if it is not already expanded.  
+Select **oauth-1**, then click \<Add\>.
+![alt text](./images/image-29.png)
 
-![alt text][pic39]
+You should see **oauth-1**, along with **ClientID, Secret**. <br>
+![alt text](./images/image-30.png)
 
-7\. Select **oauth-1** and click on **Scopes** and select **customer**.  Click **Create**.
+So, your API is now protected with multiple securities and the API consumers can use either security. <br>
 
-![alt text][pic90]
+Now, select **customer** scope as below. <br>
+![alt text](./images/image-31.png)
 
-8\. Click **Save**.
 
-![alt text][pic69]
 
-9\. Once saved, you will see an indicator window appear that shows that **Your API has been updated**.  Click on the **X** to close the window.
+# 6. Publish the API <a name="publish-api"></a>
 
-![alt text][pic70]
+![alt text](./images/image-32.png)
 
-[pic32]: images/32.png
-[pic33]: images/33.png
-[pic34]: images/34.png
-[pic35]: images/35.png
-[pic36]: images/36.png
-[pic37]: images/37.png
-[pic38]: images/38.png
-[pic39]: images/39.png
-[pic40]: images/40.png
-[pic41]: images/41.png
-[pic42]: images/42.png
-[pic69]: images/69.png
-[pic70]: images/70.png
-[pic90]: images/90.png
-[pic91]: images/91.png
+![alt text](./images/image-33.png)
 
-# 6. Create a New Product <a name="create_product"></a>
+![alt text](./images/image-34.png)
 
-In IBM API Connect, Plans and APIs are grouped together in Products, with which you can manage the availability and visibility of APIs and Plans.
 
-Products allow related APIs to be bundled together for subscribers.
 
-1\. In the left menu, click on **Develop**.
+# 7. Test OAUTH Security<a name="test_oauth"></a>
 
-![alt text][pic43]
+In this section, you will test the API to ensure that OAuth is working properly. <br>
 
-2\. Click on **Products**
+Login the Dev Portal with your studentid, and password that you created in the first lab. <br>
 
-![alt text][pic44]
+![alt text](./images/image-35.png)
 
-3\. Click **Add** and select **Product** from the drop down menu.
+<!--
+Click on customer-database-agw product. <br>
 
-![alt text][pic45]
+![alt text](./images/image-36.png)
+-->
 
-![alt text][pic46]
+Click on Applications. <br>
 
-4\. Select **New product** and click **Next**.
+![alt text](./images/image-37.png)
 
-![alt text][pic47]
+Click on the **demo-app** that you created and subscribed to customer-database-agw product/api. <br>
+![alt text](./images/image-38.png)
 
-5\. Enter **Customer** for the **Title** and change the **Version** to **2.0.0**.  Click **Next**.
+We will use the **Client Id, Client Secret** next to obtain OAUTH Bearer Token. <br>
+![alt text](./images/image-39.png)
 
-![alt text][pic48]
+**SAVE**  ClientID, Secret into a Notepad or Textpad. <br>
 
-6\. Select the **Customer Database** API that is version **2.0.0** and click **Next**.
+Now, let's capture the TOKEN URL. <br>
 
-![alt text][pic49]
+Click on the API Name. <br>
 
-7\. We are going to create some new Plans.  Click **Add**
+![alt text](./images/image-40.png)
 
-![alt text][pic50]
+Copy the highlighted section of the Endpoint URL (upto Sanxbox) and save to Notepad. <br>
 
-8\. Replace **Plan 1** with **Gold** for the **Title** and **500** for the **Rate limit**.
+![alt text](./images/image-41.png)
 
-![alt text][pic51]
+So you should have captured CLIENTID, SECRET, and part of the Endpoint URL. We will use them the below curl command<br>
 
-9\. Click on the **Trash can** icon next to the **Default plan** to delete it.
-
-![alt text][pic52]
-
-10\. Click **Add** to add another Plan.
-
-![alt text][pic53]
-
-11\. Replace **Plan 2** with **Silver** for the **Title** and **250** for the **Rate limit**.
-
-![alt text][pic54]
-
-12\. Click **Add** to add another Plan.
-
-![alt text][pic53]
-
-13\. Replace **Plan 3** with **Bronze** for the **Title** and **2** for the **Rate limit** and change the drop down from **hour** to **minute**.  Click **Next**.
-
-![alt text][pic55]
-
-14\. Select **Public** for **Visibility** and **Authenticated** for **Subscribability**.  Click **Next**.
-
-![alt text][pic56]
-
-15\. Your Product will be created and associated with the required objects such as APIs and Plans.  Click **Done**.
-
-![alt text][pic57]
-
-16\. Click on **Products**.
-
-![alt text][pic58]
-
-[pic43]: images/43.png
-[pic44]: images/44.png
-[pic45]: images/45.png
-[pic46]: images/46.png
-[pic47]: images/47.png
-[pic48]: images/48.png
-[pic49]: images/49.png
-[pic50]: images/50.png
-[pic51]: images/51.png
-[pic52]: images/52.png
-[pic53]: images/53.png
-[pic54]: images/54.png
-[pic55]: images/55.png
-[pic56]: images/56.png
-[pic57]: images/57.png
-[pic58]: images/58.png
-
-# 7. Stage the Product to your API Manager Environment <a name="stage_product"></a>
-
-Before an API Product can be published, we must first stage that Product to a Catalog. When a Product is in the staged state, it is not yet visible to, or subscribable by developers. However, it can be reviewed by the API Product Manager and published once it has been determined that the API Product is ready to be consumed.
-
-If you stage a Product to a Catalog, editing and then restaging that Product through the Products tab of API Designer or API Manager will affect changes to the staged version.
-
-1\. Click on the **3-dot** menu next to version **2.0.0** of the **Customer** Product and select **Stage**.
-
-![alt text][pic59]
-
-2\. Select **Sandbox** for the **Stage to** catalog and click **Next**.
-
-Note:  IBM API Connect allows you to publish products to specific gateways associated with the Catalog.
-
-![alt text][pic60]
-
-3\. Accept the default values for **Visibility** and **Subscribability** and click **Stage**.
-
-![alt text][pic100]
-
-[pic59]: images/59.png
-[pic60]: images/60.png
-[pic100]: images/100.png
-
-
-# 8. Supersede Version 1.0.0 of the Product <a name="supersede"></a>
-
-IBM API Connect provides capabilities for managing the lifecycle of your API Products. There are various states which an API Product can reside in, as well as controls around when you can move an API Product from one state to another. In this section, you will explore how to replace a running version of an API Product with a new one.
-
-1\. In the left menu, click **Manage**.
-
-![alt text][pic61]
-
-2\. Click on **Sandbox**.
-
-![alt text][pic62]
-
-3\. The **Products** tab will list all of the API Products that this Catalog is currently managing.  Confirm version **2.0.0** of the **Customer** Product is **Staged** and version **1.0.0** of the Customer Product is **Published**.
-
-![alt text][pic63]
-
-4\. Click on the **3-dot** menu next to version **1.0.0** of the **Customer** Product and click **Supersede**.
-
-![alt text][pic64]
-
-5\. Select **customer 2.0.0** and click **Next**.
-
-![alt text][pic65]
-
-6\.  In order to maintain our consumers' entitlements, we need to migrate their Plan subscriptions.
-
-The **customer 1.0.0** Product has a Plan called **Default Plan**.  The **customer 2.0.0** Product does not have a Default Plan.  Therefore, we need to choose how we are going to move the subscribers.  Select **Bronze** from the **Target** drop down menu and click **Supersede**.
-
-![alt text][pic66]
-
-7\. IBM API Connect will take care of deprecating version 1.0.0 of the Product and publishing version 2.0.0.
-
-![alt text][pic67]
-
-[pic61]: images/61.png
-[pic62]: images/62.png
-[pic63]: images/63.png
-[pic64]: images/64.png
-[pic65]: images/65.png
-[pic66]: images/66.png
-[pic67]: images/67.png
-
-# 9. Test the OAuth Configuration <a name="test_oauth"></a>
-
-In this section, you will test the new version of the API to ensure that OAuth is working properly.
-
-1\. In the top menu, click **Catalog settings**.
-
-![alt text][pic71]
-
-2\. Click on **Portal**.
-
-![alt text][pic72]
-
-3\. Copy the **Portal URL** and paste it in a new browser tab.
-
-![alt text][pic73]
-
-4\. Click **Sign in** and use the Username and Password for the Portal account that you created in "The Developer Portal Experience" lab.
-
-![alt text][pic74]
-
-5\. Click on **Apps**.
-
-![alt text][pic82]
-
-6\. Select the app that you created in "The Developer Portal Experience" lab (e.g. Customer Demo).
-
-![alt text][pic83]
-
-7\. Click on **Subscriptions**.
-
-![alt text][pic84]
-
-8\. Under **Product subscriptions**, click **Migrate this subscription to plan 'bronze' in product 'Customer' at version '2.0.0'**.
-
-![alt text][pic85]
-
-9\. Confirm that you want to migrate the subscription but clicking **Migrate subscription**.
-
-![alt text][pic86]
-
-10\. You will see that the subscription has been successfully migrated.
-
-![alt text][pic87]
-
-11\. Click on **API Products**.
-
-![alt text][pic76]
-
-12\. Click on **Customer 2.0.0**.
-
-![alt text][pic77]
-
-13\. Click on the **Customer Database 2.0.0** API.
-
-![alt text][pic78]
-
-14\. Click **GET /customers**
-
-![alt text][pic79]
-
-15\. Click **Try it**.
-
-![alt text][pic80]
-
-16\. From the **Security** drop-down menu, select **oauth-1**.
-
-![alt text][pic81]
-
-17\. Confirm that your application is shown in the **API Key** and enter your application secret for the **API Secret**.
-
-![alt text][pic88]
-
-18\. 
-In the **Username** field, enter **student(n)**.  In the **Password** field, enter **passw0rd**.  Select **customer** for the **Scopes**.
-
-Recall that when we configured the OAuth API, we provided an Authentication URL as the method for validating the user credentials.
-
-Click **Get Token**.
-
-![alt text][pic89]
-
-19\. 
-The API Portal will call out to the OAuth Token URL with your client credentials and user credentials.  The OAuth API will intercept the request, validate the credentials, and generate a token. 
-
-![alt text][pic92] 
-
-20\. 
-Click **Send** to invoke the API. The request will include the OAuth bearer token in the Authorization header.
-
-![alt text][pic93]
-
-21\. 
-Scroll down to see the call results.
-
-![alt text][pic94]
-
-
-
+<!--
 21a\. TESTING WITH CURL (Optional)
 
 ** From the developer portal **
 ** Copy the GET /customers URL and save to Scratchpad or Notepad. ** <br>
 ** Copy the "token url" and save to Scratchpad or notepad.**
+-->
 
-Get Token using CURL command <br>
-<br>
-Open a Terminal or Command Line window.<br>
+Open a **Terminal** or **Command Line** window.<br>
 
 **Get Bearer Token:** <br>
-Run the curl command below. <br>
+
+Copy the below curl command into the Terminal, and replace Client ID, and Secret, and endpoint URL from the above. <br>
+
 ```
-curl -k -X POST -d "grant_type=password&client_id=REPLACE_WITH_YOUR_CLIENT_ID&client_secret=REPLACE_WITH_YOUR_CLIENT_SECRET&username=student(n))&password=passw0rd&scope=customer" REPLACE_WITH_YOUR_TOKEN_URL 
+curl -k -X POST -d "grant_type=password&client_id=REPLACE_WITH_YOUR_CLIENT_ID&client_secret=REPLACE_WITH_YOUR_CLIENT_SECRET&username=student(n))&password=passw0rd&scope=customer" REPLACE_WITH_YOUR_TOKEN_URL/student(n)-oauth/oauth2/token
 ```
+
 <br>
-EXAMPLE TOKEN URL: https://apim-demo-gw-gateway-cp4i-apic.apps.65f99e15920665001e3bcf85.cloud.techzone.ibm.com/student20-porg/sandbox/student20-oauth/oauth2/token
+EXAMPLE:
+curl -k -X POST -d "grant_type=password&client_id=xxxxxx&client_secret=yyyyyy&username=student1&password=passw0rd&scope=customer" https://apim-demo-gw-gateway-cp4i-apic.apps.itz-xxxxx.infra01-lb.dal14.techzone.ibm.com/sbodapati-porg/sandbox/student1-oauth/oauth2/token
 <br>
 Output should look like below: <br>
 
-![alt text](./images/curl-get-token.png)
+![alt text](./images/image-42.png)
 
-Now run the "GET /customers" method as below. <br>
+Now, from the Developer Portal, copy the customer-database-agw Endpoint basepath. <br>
+
+![alt text](./images/image-43.png)
+
+Now copy the below curl command into the Terminal window and update with the Bearer token and the endpoint url appending /customers to the endpoint URL.
 
 ```
-curl -k -H "Authorization: Bearer REPLACE_WITH_YOUR_BEARER_TOKEN_FROM_ABOVE" REPLACE_WITH_GET_CUSTOMERS_URL <br> <br>
-Example URL: https://apim-demo-gw-gateway-cp4i-apic.apps.65f99e15920665001e3bcf85.cloud.techzone.ibm.com/student20-porg/sandbox/customerdb/v1/customers | jq
+curl -k -H "Authorization: Bearer REPLACE_WITH_YOUR_BEARER_TOKEN_FROM_ABOVE" REPLACE_WITH_GET_CUSTOMERS_URL
 ```
-<br>
-You should see bunch of customers in json format.<br>
 
+Example URL:  <br>
+curl -k -H "Authorization: Bearer AAIgNWU5OGRiYjEzNGU3ZDJlOGQ5NjBjZTlgPl5hj59Dl2tuPTQ_RTfE2BjgYOa1unWWlatdflfw0SYRbX_14TiXQG_u_hPT1cWy3DtvA" https://apim-demo-gw-gateway-cp4i-apic.apps.itz-xxxxx.infra01-lb.dal14.techzone.ibm.com/sbodapati-porg/sandbox/ace-tk-customerdb-v3-http-cp4i-ace.apps.itz-xxxxxx.infra01-lb.dal14.techzone.ibm.com/customerdb/v3/customers
+
+
+![alt text](./images/image-44.png)
+
+You should see the customers. <br>
 
 22\. Feel free to test the rest of the operations.  Testing will be similar to the testing that was completed in the "Create and Secure an API to Proxy an Existing REST Web Service" lab.
 
 23\. To prove that the token is being validated, you can modify the contents of the **Access Token** field. Click **Send** again and you will see an error response.  **Note:** Modifying the beginning of the token will throw a **Client id missing** error.  Modifying the middle or end of the token will throw the error below.
 
-![alt text][pic95]
 
-[pic71]: images/71.png
-[pic72]: images/72.png
-[pic73]: images/73.png
-[pic74]: images/74.png
-[pic76]: images/76.png
-[pic77]: images/77.png
-[pic78]: images/78.png
-[pic79]: images/79.png
-[pic80]: images/80.png
-[pic81]: images/81.png
-[pic82]: images/82.png
-[pic83]: images/83.png
-[pic84]: images/84.png
-[pic85]: images/85.png
-[pic86]: images/86.png
-[pic87]: images/87.png
-[pic88]: images/88.png
-[pic89]: images/89.png
-[pic92]: images/92.png
-[pic93]: images/93.png
-[pic94]: images/94.png
-[pic95]: images/95.png
 
-## Summary
+## 8. Summary<a name="summary"></a>
 
 Congratulations, you have completed the **Add OAuth Security to your API and use Lifecycle Controls to Version Your API** lab. Throughout the lab, you learned how to:
 
 -   Configure an OAuth 2.0 service with the Resource Owner Password grant type
 
--   Clone a new version of an API
+-   Secure your API with OAUTH
 
--   Secure the new version of your API
+-   Tested your API with OAUTH
 
 [Return to main APIC lab page](../ReadMe.md#lab-abstracts)

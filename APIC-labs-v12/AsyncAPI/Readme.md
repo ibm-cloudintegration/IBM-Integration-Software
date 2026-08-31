@@ -1,4 +1,4 @@
-# Socializing Kafka Events through AsyncAPI using IBM Event Endpoint Management (EEM) and IBM API Connect
+# Socializing Kafka Events through AsyncAPI using IBM Event Endpoint Management, Confluent, and IBM API Connect
 
 
 [Return to main APIC lab page](../ReadMe.md#lab-abstracts)
@@ -8,11 +8,11 @@
 # Table of Contents
 - [1. Introduction](#introduction)
 - [2. Confluent Kafka](#confluent)
-- [3. IBM Event Endpoint Manager](#eem-section)
-    * [3a. Review FLIGHT.LANDINGS Topic](#review-topic)
-    * [3b. Topics](#topics)
-    * [3c. Virtual Topics](#virtual-topics)
-    * [3d. Catalogs](#catalogs)
+- [3. IBM Event Endpoint Management (EEM)](#eem-section)
+    * [3a. Event Endpoint Management - Console](#eem-console)
+    * [3b. Event Endpoint Management - Topics](#topics)
+    * [3c. Event Endpoint Management - Virtual Topics](#virtual-topics)
+    * [3d. Event Endpoint Management - Catalogs](#catalogs)
 - [4. IBM API Connect](#apiconnect)
     * [4a. API Connect Manager](#apiconnect-manager)
     * [4b. API Connect Developer Portal](#apiconnect-devptl)
@@ -89,28 +89,37 @@ Linux workstation.
     The Linux workstation functions as the primary interface for
     interacting with the OpenShift cluster. 
 
+You will be performing this lab from the Desktop provided by your instructor. <br>
+
+Logon to the Desktop as ibmuser / engageibm. <br>
+
 <br>
 
 # 2. Confluent Kafka <a name="confluent"></a>
 
-Notice that the flight landing events are being generated into Confluent Kafka platform. There is a App Connect Enterprise message flow that is simulating the events. <br>
+**THIS SECTIONS is REVIEW ONLY**
 
-![alt text](./images/image-40.png)
-
-The instructor will take care of this setup. <br>
+The instructor will take care of Confluent setup. <br>
 
 Confluent Console: https://163.66.92.248/home <br>
 User: admin <br>
 Password: ssx1JrsQt5YJhRFVJSjM98QW <br>
 <br>
-Once login explore FLIGHT.LANDINGS topic events. <br><br>
+Once login explore FLIGHT.LANDINGS topic events. <br>
 
-# 3. IBM Event Endpoint Manager <a name="eem-section"></a>
+Notice that the flight landing events are being generated into Confluent Kafka platform. There is a App Connect Enterprise message flow that is simulating the events. <br>
 
-**Note:** This section is just showing the screens that an Event Endpoint Management Admin would use to expose a topic as AsyncAPI for IBM API Connect.
+![alt text](./images/image-40.png)
+
 <br>
 
-## 3a. Review FLIGHT.LANDINGS Topic <a name="review-topic"></a>
+
+# 3. IBM Event Endpoint Management (EEM) <a name="eem-section"></a>
+
+**This section is showing the screens that an Event Endpoint Management Admin would use to expose a topic as AsyncAPI for IBM API Connect.**
+<br>
+
+## 3a. Event Endpoint Management - Console <a name="eem-console"></a>
 
 **THIS SECTIONS is REVIEW ONLY**
 
@@ -127,7 +136,9 @@ button to view the Topics view.
 
 ![](./images/image-31.png)
 
-## 3b. Topics<a name="topics"></a>
+## 3b. Event Endpoint Management - Topics<a name="topics"></a>
+
+**THIS SECTIONS is REVIEW ONLY** <br>
 
 ![](./images/image-32.png)
 
@@ -143,7 +154,9 @@ Explore the **Information** tab. Notice the Schema, and Sample message
 that is describing the FLIGHT.LANDINGS topic.
 
 
-## 3c. Virtual topics <a name="virtual-topics"></a>
+## 3c. Event Endpoint Management - Virtual topics <a name="virtual-topics"></a>
+
+**DO THIS SECTION** <br>
 
 Let's create a virtual topic with your student id, for example STUDENT1.FLIGHT.LANDINGS. <br>
 
@@ -166,7 +179,7 @@ After Publish, it should look like below. <br>
 ![alt text](./images/image-7.png)
 
 
-## 3d. Catalogs<a name="catalogs"></a>
+## 3d. Event Endpoint Management - Catalogs<a name="catalogs"></a>
 
 Now, click on the Catalog icon on the left to see the Published Topics
 to the Event Gateway.
@@ -177,10 +190,7 @@ Click on FLIGHT.LANDINGS topic, and you should see your virtual topic for exampl
 
 ![alt text](./images/image-9.png)
 
-
 <br>
-
-
 
 
 # 4. IBM API Connect <a name="apiconnect"></a>
@@ -237,7 +247,7 @@ Click on "Asset Gallery". <br>
 You should see the Virtual Topic that you created and published in the Event Endpoint Manager section. <br>
 ![alt text](./images/image-18.png)
 
-Click on that tile (STUDENT(n).FLIGHT.LANDINGS). Now click on \<Consume\> icon so that you can subscribe and consume the events.<br>
+Click on your Virtual Topic AsyncAPI tile (ex: STUDENT1.FLIGHT.LANDINGS). Now click on \<Consume\> icon so that you can subscribe and consume the events.<br>
 
 ![alt text](./images/image-19.png)
 
@@ -304,7 +314,7 @@ In this section, you will consume the flight landing events using Kafka Clients 
 
 ## 5a. Capture Event Gateway Certificates<a name="generate-egw-cert"></a>
 
-**Note:** Make sure you are logged into the OpenShift Cluster. If not, logon before running the script below. <br>
+**Note:** Ensure you are logged into the OpenShift cluster in the Terminal before proceeding - you can do so by accessing OpenShift console, then, copy the login command (top right corner > hover over ‘student(n)’ > copy login command) to your clipboard and use it to log into your terminal. <br>
 
 Run the generate_egw_cert.sh script.
 
@@ -401,9 +411,37 @@ In this laboratory, you have examined the AsyncAPI of IBM Event Endpoint Managem
 
 LAB INSTRUCTOR PreWork. <br>
 
+Environments: <br>
+
 Techzone Collection for Confluent: https://techzone.ibm.com/collection/confluent-platform-environments/environments <br>
 Env Name: Confluent Platform Enterprise Software
 
-Deploy Flight Landings Simulator to ACE. <br>
+Techzone RHEL Desktop: 
+https://techzone.ibm.com/collection/integration-application-modernization-pots/environments?platform=69d16bc98a606868ad154e31
+<br>
+
+Flight Landings Simulator to ACE. <br>
 GitRepo: https://github.com/ibm-cloudintegration/CP4I-PoT-Public/tree/main/AppConnect/flight-landing-simulator-confluent
 <br>
+
+```
+
+EVENT ENDPOINT MANAGEMENT. - API CONNECT INTEGRATION
+
+First login to DEV Portal as user administrator .
+Password can get using the command below.
+
+oc get secret apim-demo--dceadcab-admin-secret -n cp4i-apic -o jsonpath='{.data.password}' | base64 -d
+
+After logging into the dev portal as administrator, create user dpadmin, passw0rd.
+
+— now create secret in event-automation
+oc create secret generic devportal-api-secret --from-literal="apim-key”=“dpadmin:passw0rd” -n event-automation 
+
+
+— Get apim-demo-mgmt-devportal-admin-client secret from cp4i-apic then create devportal-ca secret in event-automation
+
+kubectl get secret apim-demo-mgmt-devportal-admin-client -n cp4i-apic -o json \
+  | jq 'del(.metadata.annotations, .metadata.labels, .metadata.creationTimestamp, .metadata.resourceVersion, .metadata.uid) | .metadata.namespace = "event-automation" | .metadata.name = "devportal-ca"' \
+  | kubectl apply -f -
+```

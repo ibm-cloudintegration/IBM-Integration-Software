@@ -8,7 +8,7 @@
 # Table of Contents
 
 - [1. Introduction](#introduction)
-- [2. IBM App Connect - Deploy Temperature Converter WebService](#configure_oauth)
+- [2. IBM App Connect - Deploy Temperature Converter WebService](#app-connect-deploy)
 - [3. IBM API Connect - Create REST Proxy from the WSDL](#apic-create-api)
 	* [3a. Add API](#apic-add-api)
 	* [3b. Publish API](#apic-publish-api)

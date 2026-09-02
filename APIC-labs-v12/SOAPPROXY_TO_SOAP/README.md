@@ -1,15 +1,34 @@
 # Creating SOAP Proxy based upon a WSDL
 
-# 1. Overview
+[Return to main APIC lab page](../ReadMe.md#lab-abstracts)
 
-In this lab, you will expose a SOAP WebService as SOAP Proxy in API Connect. You will be deploying a very simple Temperature Converter WebService.  The Temperature Converter WebService is built on App Connect Enterprise Toolkit, and the bar file will be deployed to App Connect Dashboard on Cloud Pak for Integration.<br>
+---
+
+# Table of Contents
+
+- [1. Introduction](#introduction)
+- [2. IBM App Connect - Deploy Temperature Converter WebService](#app-connect-deploy)
+- [3. IBM API Connect - Create REST Proxy from the WSDL](#apic-create-api)
+	* [3a. Add API](#apic-add-api)
+	* [3b. Publish API](#apic-publish-api)
+- [4. Testing REST Proxy Service](#test-api)
+- [5. Summary](#summary)
+
+---
+
+
+# 1. Introduction <a name="introduction"></a>
+
+In this lab, you will expose a SOAP WebService as SOAP Proxy in API Connect. You will be deploying a very simple Temperature Converter WebService into IBM App Connect then expose it to IBM API Connect as a SOAP API. <br>
 
 <b> Design diagram </b>
 <br>
 ![Alt text](./images/design-diagram.png)
 <br>
 
-# 2. App Connect - Deploy Temperature Converter WebService
+# 2. IBM App Connect - Deploy Temperature Converter WebService <a name="app-connect-deploy"></a>
+
+**Skip this step if you have already done the previous REST Proxy lab.** <br>
 
 <b>Download the bar file from [<b><u>HERE</u></b>](./src/TemperatureConverter.bar).
 </b>
@@ -51,79 +70,87 @@ Click on the Properties tab, and copy "SOAP HTTP URL". This will be configured i
 
 
 
-# 3. Api Connect - Create SOAP Proxy from the WSDL
+# 3. IBM Api Connect - Create SOAP Proxy from the WSDL <a name="apic-create-api"></a>
 
 Download the zip file that contains Temperature Converter WSDL, and XSD's from [<b><u>here</u></b>](./src/TemperatureConverter_WSDL.zip).
 
 Logon to Cloud Pak for Integration, and open API Management (apim-demo). <br>
 
-Select "Develop APIs and Products" tile.<br>
+Click on "API Studio" icon.<br>
 
 ![Alt text](./images/image-2.png)
 
-Click on "Add" > API button on the top right of the screen.<br>
+Click on "New API Project > Create a new project".<br>
 
 ![Alt text](./images/image-4.png)
 
-Select the API Type "From Existing WSDL Service (SOAP Proxy). <br>
+Enter **"Project name"** as **"student(n)-soap-project"**, and  "Description" as **"TemperatureConverter - SOAP to REST".** <br>
 
-Click \<Next\> in the bottom right of of the screen. <br>
-
-Drag and drop the zip file downloaded above.<br>
-![Alt text](./images/image-5.png)
-
-Click \<Next\> in the bottom right of of the screen. <br>
-
-![Alt text](./images/image-6.png)
-
-Click \<Next\> in the bottom right of of the screen. <br>
+![alt text](./images/image-4a.png)
 
 
-Change the API name as studentxx-temperature-converter-soap-api
-<br>
-![Alt text](./images/image-7.png)
-
-Click \<Next\> in the bottom right of of the screen. <br>
-
-![Alt text](./images/image-8.png)
-
-Click \<Next\> in the bottom right of of the screen. <br>
 
 
-![Alt text](./images/image-9.png)
+## 3a. Add API <a name="apic-add-api"></a>
 
-Click \<Edit API\> in the bottom right of of the screen. <br>
+Click on the project you just created. <br>
+![alt text](./images/image-4b.png)
 
-![alt text](./images/image-9a.png)
+Click on **"Add API"**. <br>
+![alt text](./images/image-4c.png)
 
-Click on "Host", and blank out the value. <br>
-![Alt text](./images/image-11.png)
+Select **SOAP**. <br>
+![alt text](./images/image-4d.png)
 
-Click on "Gateway" Tab. <br>
+Drag and drop the zip file that you downloaded above. <br>
 
-![Alt text](./images/image-10.png)
+![alt text](./images/image-4e.png)
 
-Close the Node pallete.<br>
+Enter **API Name** as **student(n)-temperature-converter-soap-api**, then click **\<Create\>**. <br>
 
-<br>
-Now, complete the API design. <br><br>
+![alt text](./images/image-4f.png)
 
-Click on "Properties" on the left, and click (+) sign. Add target-url property, and paste "SOAP HTTP URL" captured in the previous section as below. <br>
+Copy the highlighted **path** value (Control+c). We need update this value in the two yml files highlighed below.<br> 
 
-![Alt text](./images/image-15.png)
+![alt text](./images/image-4g.png)
 
-Click \<Create\>. <br>
+Notice that it's missing part of the zip file. **its a bug, will be fixed**<br>
+![alt text](./images/image-4h.png)
 
-Now, click on "Policies" option on the left, and lets modify the API in the designer view.<br>
+Paste here. <br>
+![alt text](./images/image-4i.png)
 
-<br>
-Now click on the  "Invoke" Node, and update the URL. <br>
+Similarly, update next **yml** file as below. <br>
+![alt text](./images/image-4j.png)
 
-![Alt text](./images/image-16.png)
+Click on the **Design** view. <br>
 
-Update URL value to "{target-url}" (without the double quotes). <br>
+![alt text](./images/image-4k.png)
 
-SAVE the API (The Save button is on the top right of the screen). <br>
+
+Click **Policy Sequence**, and then click **assembly**. <br>
+
+![alt text](./images/image-4l.png)
+
+Close the Policies view. <br>
+
+![alt text](./images/image-4m.png)
+
+Click on the "Invoke" policies and set the URL that you captured in the IBM App Connect section. <br>
+
+![alt text](./images/image-4n.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 

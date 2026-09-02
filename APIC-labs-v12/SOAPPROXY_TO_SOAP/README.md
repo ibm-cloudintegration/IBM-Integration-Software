@@ -67,7 +67,7 @@ Click on the Properties tab, and copy "SOAP HTTP URL". This will be configured i
 
 ![Alt text](./images/image-12.png)
 
-
+<br>
 
 
 # 3. IBM Api Connect - Create SOAP Proxy from the WSDL <a name="apic-create-api"></a>

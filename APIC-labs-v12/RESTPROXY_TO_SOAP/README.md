@@ -1,6 +1,24 @@
-# Creating REST Proxy based upon a WSDL
+#  IBM API Connect - Creating REST Proxy based upon a WSDL
 
-# 1. Overview
+[Return to main APIC lab page](../ReadMe.md#lab-abstracts)
+
+
+---
+
+# Table of Contents
+
+- [1. Introduction](#introduction)
+- [2. IBM App Connect - Deploy Temperature Converter WebService](#configure_oauth)
+- [3. IBM API Connect - Create REST Proxy from the WSDL](#apic-create-api)
+	* [3a. Add API](#apic-add-api)
+	* [3b. Publish API](#apic-publish-api)
+- [4. Testing REST Proxy Service](#test-api)
+- [5. Summary](#summary)
+
+---
+
+
+# 1. Introduction <a name="introduction"></a>
 
 In this lab, you will configure a SOAP WebService that is deployed to IBM App Connect to function as a REST Proxy within IBM API Connect. You will be deploying a very simple Temperature Converter WebService into IBM App Connect then expose it to IBM API Connect as a REST API.  <br>
 
@@ -9,7 +27,7 @@ In this lab, you will configure a SOAP WebService that is deployed to IBM App Co
 ![Alt text](./images/design-diagram.png)
 <br>
 
-# 2. App Connect - Deploy Temperature Converter WebService
+# 2. IBM App Connect - Deploy Temperature Converter WebService <a name="ace-deploy"></a>
 
 Download the bar file from [<b><u>here</u></b>](./src/TemperatureConverter.bar).
 
@@ -50,7 +68,7 @@ Click on the Properties tab, and copy "SOAP HTTP URL". This will be configured i
 <br>
 
 
-# 3. Api Connect - Create REST Proxy from the WSDL
+# 3. IBM API Connect - Create REST Proxy from the WSDL <a name="apic-create-api"></a>
 
 Download the zip file that contains Temperature Converter WSDL, and XSD's from [<b><u>here</u></b>](./src/TemperatureConverter_WSDL.zip).
 
@@ -70,7 +88,7 @@ Enter **"Project name"** as **"student(n)-soap-project"**, and  "Description" as
 
 
 
-## 3a. Add API 
+## 3a. Add API <a name="apic-add-api"></a>
 
 Click on the project you just created. <br>
 ![alt text](./images/image-4b.png)
@@ -102,9 +120,24 @@ Similarly, update next **yml** file as below. <br>
 ![alt text](./images/image-4j.png)
 
 Click on the **Design** view. <br>
-![alt text](image--4k.png)
 
-## 3b. Publish API 
+![alt text](./images/image-4k.png)
+
+
+Click **Policy Sequence**, and then click **assembly**. <br>
+
+![alt text](./images/image-4l.png)
+
+Close the Policies view. <br>
+
+![alt text](./images/image-4m.png)
+
+Click on the "Invoke" policies and set the URL that you captured in the IBM App Connect section. <br>
+
+![alt text](./images/image-4n.png)
+
+
+## 3b. Publish API <a name="apic-publish-api"></a>
 
 Click **Publish**. <br>
 
@@ -126,103 +159,51 @@ Click \<Catalog settings\> tab, then click on **Portal**.<br>
 
 ![Alt text](./images/image-9.png)
 
-
-<br>
-xxxxxxxx
 <br>
 
+# 4. Testing REST Proxy Service<a name="test-api"></a>
 
 
-Click on "Host", and blank out the value. <br>
-![Alt text](./images/image-11.png)
+Click on the "API Products" tab.<br>
+![alt text](./images/image-15.png)
 
+Click on student(n)-temperature-converter-rest-api-product. <br>
+![alt text](./images/image-16.png)
 
-Click on "Gateway" Tab. <br>
-
-![Alt text](./images/image-10.png)
-
-Watch how the API is orchestrated with parse, mapping, and Invoke nodes. Ciick on each node and see details (Example below).<br>
-
-![Alt text](./images/json-wsdl-mapping.png)
-
-<br>
-Now, complete the API design. <br><br>
-
-Click on "Properties" on the left, and click (+) sign. Add target-url property, and paste "SOAP HTTP URL" captured in the previous seciton as below. <br>
-
-![Alt text](./images/image-15.png)
-
-Click \<Create\>. <br>
-
-Now, click on "Policies" option on the left, and lets modify the API in the designer view.<br>
-
-Click on each Node on the API Designer, see how the mapping is configured between REST to WSDL format. <br>
-<br>
-Now click on the first "CtoF Invoke" Node, and update the URL. <br>
-
-![Alt text](./images/image-16.png)
-
-Update URL value to "{target-url}" (without the double quotes). <br>
-
-Similary, set the URL field on the other three Invoke Nodes to be same "{target-url}".<br>
-
-SAVE the API (The Save button is on the top right of the screen). <br>
-
-<br>
-
-# 4. Testing the REST Proxy
-Click on the "Test" tab.<br>
+Click **\<Subscribe\>**. <br>
 ![alt text](./images/image-17.png)
 
-Click on "Test Configuration". <br>
-![alt text](./images/image-17a.png)
+Select **Create new subscription**, then click **Request**. <br>
+![alt text](./images/image-18.png)
 
-Enable Auto-publish, and click "Save Preferences".<br>
-![Alt text](./images/image-18.png)
+![alt text](./images/image-19.png)
 
-Now, the API should be online.<br>
-![alt text](./images/image-18a.png)
+Click on soap-demo application. <br>
+![alt text](./images/image-20.png)
 
+Click on the API. <br>
+![alt text](./images/image-21.png)
 
-Select GET CtoF operation. <br>
-Click "**Clear**" to display the Parameters.<br>
+![alt text](./images/image-22.png)
 
-![Alt text](./images/image-20.png)
+Select **API Resources** > **/CtoF** > **GET**, then click **\<Try\>** button. <br>
+![alt text](./images/image-23.png)
 
-Enter 45 for TemperatureInC parameter below.<br>
-![alt text](./images/image-20a.png)
-
+Enter a Centigrade value, and cick **\<Send\>**. <br>
+![alt text](./images/image-24.png)
 
 You should get the response with the Converted Fahrenheit value as below.<br>
-![Alt text](./images/image-19.png)
 
-Check the "trace" tab of each Node as below.<br>
+![alt text](./images/image-25.png)
 
-![Alt text](./images/image-21.png)
-
-![Alt text](./images/image-22.png)
-
-Also, check "trace" for each of the remaining nodes. <br>
 
 **Optional test:** You can also try POST CtoF operation and enter below in the Body tab. <br>
-```
-{
-    "TemperatureInC": 30
-}
-```
-<br><br><br>
-
-**Similary, test FtoC method.**
-<br>
-```
-Enter sample JSON in the Body.
-{
-    "TemperatureInF": 32
-}
-```
-### Congratulations!!!
 
 
+# 5. Summary<a name="summary"></a>
 
 
+Congratulations, you have exposed a SOAP WebService deployed on IBM App Connect to IBM API Connect as an REST API. <br> <br>
+
+[Return to main APIC lab page](../ReadMe.md#lab-abstracts)
 

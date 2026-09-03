@@ -38,7 +38,9 @@ Before starting the labs you should review the lab environment and the use of th
 |---------------------------------------|-----------------------------------------------------------------------------|
 | [MQ Messaging Experiences](MQ/index.md)          | This section you will explore MQ messaging solutions as well as Event Streams solutions. <BR> A message platform to simplify and accelerate integration of diverse applications and business data across multiple platforms with multiple messaging styles.<br> A full-scale streaming platform, capable of not only publish-and-subscribe, but also the storage and processing of data within the stream.  
 |---------------------------------------|-----------------------------------------------------------------------------|     
-| [Event Automation Experiences](Kafka/index.md)          | This section you will explore MQ messaging solutions as well as Event Streams solutions. <BR> A message platform to simplify and accelerate integration of diverse applications and business data across multiple platforms with multiple messaging styles.<br> A full-scale streaming platform, capable of not only publish-and-subscribe, but also the storage and processing of data within the stream.  
+| [Event Automation Experiences](Kafka/index.md)          | This section you will explore MQ messaging solutions as well as Event Streams solutions. <BR> A message platform to simplify and accelerate integration of diverse applications and business data across multiple platforms with multiple messaging styles.<br> A full-scale streaming platform, capable of not only publish-and-subscribe, but also the storage and processing of data within the stream.
+|---------------------------------------|-----------------------------------------------------------------------------|
+| [Integration AI Agents](ai-agents/index.md)          | This section you AI Agents for Integration Unified Platform, MQ, App Connect, API Connect AI Agents.
 |---------------------------------------|-----------------------------------------------------------------------------|
 
 

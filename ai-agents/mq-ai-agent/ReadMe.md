@@ -13,7 +13,7 @@
 
 ## 1. Overview <a name="overview"></a>
 
-In this lab, you will explore IBM MQ AI Agent capabilities. 
+In this lab, you will explore IBM MQ AI Agent capabilities.
 
 **What is MQ AI Agent?** 
 The IBM MQ Agent is an AI-powered conversational assistant designed to help administrators explore configurations, monitor object status, and troubleshoot messaging issues across IBM MQ networks using natural language. <br>

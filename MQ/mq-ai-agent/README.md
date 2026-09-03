@@ -95,6 +95,11 @@ Run some sample prompts: <br>
 
 18. Is APPQ under mqdv03 queue manager full?
 
+Channels: <br>
+19. Are any channels in Retrying state on mqdv03 queue manager?
+
+20. What applications are connecting to channel SB.SVRCONN on mqdv03 queue manager?
+
 <br>
 
 ## 4. Summary <a name="summary"></a>

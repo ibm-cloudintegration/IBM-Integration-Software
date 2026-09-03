@@ -5,7 +5,7 @@
 # Table of Contents
 
 - [1. Overview](#overview)
-- [2. IBM MQ WebConsole ](#webconsole)
+- [2. Accessing IBM MQ WebConsole ](#webconsole)
 - [3. Sample prompts](#prompts)
 - [4. Summary ](#summary)
 
@@ -34,9 +34,7 @@ Translates plain-English questions into insights about queue states, channel hea
 <br>
 
 
-## 2. IBM MQ WebConsole <a name="webconsole"></a>
-
-Follow below steps to ppen **IBM MQ WebConsole**: <br>
+## 2. Accessing IBM MQ WebConsole <a name="webconsole"></a>
 
 Login to IBM Cloud Pak for Integration's Platform Navigator using the URL Provided. <br>
 

@@ -5,7 +5,7 @@
 # Table of Contents
 
 - [1. Overview](#overview)
-- [2. Accessing IBM MQ WebConsole ](#webconsole)
+- [2. IBM Unified Integration Platform Navigator](#int-platform)
 - [3. Sample prompts](#prompts)
 - [4. Summary ](#summary)
 
@@ -13,94 +13,77 @@
 
 ## 1. Overview <a name="overview"></a>
 
-In this lab, you will explore IBM MQ AI Agent capabilities. 
+In this lab, you will explore IBM Integration Platform AI Agent Capabilities. <br>
 
-**What is MQ AI Agent?** 
-The IBM MQ Agent is an AI-powered conversational assistant designed to help administrators explore configurations, monitor object status, and troubleshoot messaging issues across IBM MQ networks using natural language. <br>
+**What is IBM Integration Platform AI Agent?** 
+IBM Integration AI Agent is a conversational, AI-powered feature in the Platform UI that helps administrators diagnose, monitor, and troubleshoot hybrid integration environments using natural language queries. <br>
 
-**Key Capabilities and Features** <br>
-- Natural-Language Diagnostics: 
-Translates plain-English questions into insights about queue states, channel health, and message backlogs.
-- Read-Only Safety: Designed with strict read-only access to query and reason about queue manager states without running modifying commands (like MQSC).
-- Model Context Protocol (MCP): Uses an MCP server backend to host diagnostic tools that fetch live structural and runtime data from up to twenty connected queue managers.
-- Containerized Architecture: Runs on Kubernetes environments such as Red Hat OpenShift or Amazon EKS, integrated via the IBM MQ Console.
-- Flexible Inferencing: Supports foundational models via IBM watsonx.ai as well as vLLM-based local or managed endpoints
+**Core Components & Specialized Agents** <br>
+The system uses a unified Supervisor Agent that coordinates multiple specialized background agents:. <br>
+
+- **Knowledge Agent**
+Queries official documentation, product guides, and support content to provide personalized guidance.
+- **Log Agent** <br>
+Scans and analyzes component logs for warnings and errors.
+- **Topology Agent**
+Maps out how software instances relate to Kubernetes objects and resources.
+- **Instance Agent**
+Checks and reports on the operational health and status of deployed instances and containers.
+- **Versions and Updates Agent**
+Proactively checks component currency and available software fixes.
+
+**Key Benefits** <br>
+- **Faster Troubleshooting**
+Cuts down time spent manually searching raw log files and complex documentation.
+- **Lower Barrier to Entry**
+Helps teams manage Kubernetes and integration topologies without requiring deep specialist expertise.
+- **Maintains Human Control**
+Acts as a guided assistant while leaving administrators fully responsible for final decisions and execution
 
 <br>
 
-**High Level MQ AI Agent Topology** <br>
+**High Level Integration AI Agent Topology** <br>
 ![alt text](./images/topology.png)
 
 <br>
 
 
-## 2. Accessing IBM MQ WebConsole <a name="webconsole"></a>
+## 2. IBM Unified Integration Platform Navigator <a name="int-platform"></a>
 
-Login to IBM Cloud Pak for Integration's Platform Navigator using the URL Provided. <br>
+Login to IBM Cloud Pak for Integration's Platform Navigator using the URL Provided, and click on the **AI** icon on the top right of the screen. <br>
 
-Filter the capabilities by searching for **cp4i-mq** then click on **mqwebconsole** to open IBM MQ WebConsole. <br>
+![alt text](image.png)
 
-![alt text](./images/image.png)
+Accept the Disclaimer if you see one. <br>
 
-Click on **Open chat window**, the IBM MQ AI Assistent icon. <br>
-![alt text](./images/image-1.png)
+![alt text](image-1.png)
 
-A chat window will appear as below. <br>
-![alt text](./images/image-2.png)
+A chat window should be opened. <br>
+![alt text](image-4.png)
+
+<br><br>
 
 ## 3. Sample prompts <a name="prompts"></a>
 
 Run some sample prompts: <br>
 
-1. What can you help with?
-![alt text](./images/image-3.png)
-  Response: <br>
-  ![alt text](./images/image-4.png)
+1. Click on **"Health check my Cloud Pak for installation**. 
+![alt text](image-2.png)
 
-2. What queue managers can you see?
-![alt text](./images/image-5.png)
+You should see details about the installation, and recommendations as you can see below that a newer Operator is available. <br>
+![alt text](image-3.png)
 
-3. Any issues with queue manager mqdv03?
-![alt text](./images/image-6.png)
+2. What can you help me with?
 
-4. Are messages building up in FLIGHT.LANDINGS Queue on Queue Manager mqdv03?
-![alt text](./images/image-7.png)
+![alt text](image-5.png)
 
-5. Is there a problem with dead letter queue on mqdv03 <br>
-** **Note:** Answer will be bit vague, if DLQ is not defined.
-
-6. Do any queues have producers?
-
-7. how do i define a local queue?
-
-8. What are the versions the queue managers?
-
-9. is there any message build up in queue manager mqdv03?
-
-10.	What is the problem with APPQ on mqdv03?
-
-11.	Diagnose APPQ on mqdv03
-
-12. What is the name of dead letter queue for mqdv03? 
-
-13. When was the last message received from amqsphac on APPQ1?
-
-14. what applications are connected to cp4i-mq-mq01ha queue manager?
-
-15. What queues are currently active?
-
-16. Show APPQ current depth?
-
-17. What applications are writing messages to APPQ?
-
-18. Is APPQ under mqdv03 queue manager full?
-
-Channels: <br>
-19. Are any channels in Retrying state on mqdv03 queue manager?
-
-20. What applications are connecting to channel SB.SVRCONN on mqdv03 queue manager?
-
+3. Create yaml to create nativeha queue manager?
+![alt text](image-6.png)
 <br>
+
+4. Similarly, run additional prompts
+<br>
+
 
 ## 4. Summary <a name="summary"></a>
 

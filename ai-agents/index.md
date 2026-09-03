@@ -14,5 +14,5 @@
 |---------------------------------------|-----------------------------------------------------------------------------|
 | [ACE AI Agent](ace-ai-agent/ReadMe.md)          | ACE AI Agent lab. 
 |---------------------------------------|-----------------------------------------------------------------------------|     
-
-
+| [ACE MCP Server with Bob](BOB_ACE_MCP_CustomerDatabase/ReadMe.md)       | In this lab, you will deploy Customer Database REST API into IBM App Connect on Cloud Pak for Integration, then you will create an Model Context Protocol (MCP) server in App Connect which will be used in IBM Bob.
+|-----------------------------|------------------------------------------------------------------------------------------------------------|

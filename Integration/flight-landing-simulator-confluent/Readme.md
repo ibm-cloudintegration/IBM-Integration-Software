@@ -1,6 +1,6 @@
 # App Connect - Exposing Customer Database REST API as an MCP Server in IBM Bob
 
-[Return to AI Agents lab page](../index.md)
+[Return to MQ lab page](../index.md)
 
 ---
 

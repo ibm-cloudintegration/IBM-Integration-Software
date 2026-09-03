@@ -8,7 +8,7 @@
 
 |  Topic                                | Description                                                                
 |---------------------------------------|-----------------------------------------------------------------------------|
-| [Integration Platform AI Agent](unified-agent/ReadMe.md)         | **Coming soon** : In this lab, you will explore IBM Integration Unified Platforms AI Agent capabilities.
+| [Integration Platform AI Agent](unified-platform-ai-agent/ReadMe.md)         | **Coming soon** : In this lab, you will explore IBM Integration Unified Platforms AI Agent capabilities.
 |---------------------------------------|-----------------------------------------------------------------------------|   
 | [MQ AI Agent](mq-ai-agent/ReadMe.md)          | In this lab, you will explore IBM MQ AI Agent capabilities.
 |---------------------------------------|-----------------------------------------------------------------------------|

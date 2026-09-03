@@ -1,4 +1,4 @@
-# IBM MQ AI Agent lab
+# IBM Integration Platform AI Agent lab
 
 ---
 

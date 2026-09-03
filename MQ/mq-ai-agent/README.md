@@ -45,7 +45,7 @@ Filter the capabilities by searching for **cp4i-mq** then click on **mqwebconsol
 Click on **Open chat window**, the IBM MQ AI Assistent icon. <br>
 ![alt text](./images/image-1.png)
 
-A chat window will as below. <br>
+A chat window will appear as below. <br>
 ![alt text](./images/image-2.png)
 
 ## 3. Sample prompts <a name="prompts"></a>

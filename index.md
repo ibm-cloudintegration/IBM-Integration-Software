@@ -1,5 +1,4 @@
-[//]:![](images\image1a.png)
-![](images\cp4i-2026.png)
+![](images\image1.png)
 
 [//]:![](images\2022-06-10_21-53-04.jpg)
 

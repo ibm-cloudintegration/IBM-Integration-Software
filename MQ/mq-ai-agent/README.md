@@ -1,4 +1,4 @@
-# IBM MQ Agent Proof Of Technology
+# IBM MQ AI Agent lab
 
 ---
 

@@ -71,7 +71,7 @@ Run some sample prompts: <br>
 
 6. Do any queues have producers?
 
-7. Do any queues have consumers?
+7. how do i define a local queue?
 
 8. What are the versions the queue managers?
 

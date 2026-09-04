@@ -67,21 +67,25 @@ A chat window should be opened. <br>
 
 Run some sample prompts: <br>
 
-1. Click on **"Health check my Cloud Pak for installation**. 
+1. Click on **"Health check my Cloud Pak for installation**. <br>
+
 ![alt text](image-2.png)
 
 You should see details about the installation, and recommendations as you can see below that a newer Operator is available. <br>
+
 ![alt text](image-3.png)
 
-2. What can you help me with?
+2. What can you help me with? <br>
 
 ![alt text](image-5.png)
 
-3. Create yaml to create nativeha queue manager?
+3. Create yaml to create nativeha queue manager? <br>
+
 ![alt text](image-6.png)
+
 <br>
 
-4. Similarly, run additional prompts
+4. Similarly, run additional prompts <br>
 <br>
 
 

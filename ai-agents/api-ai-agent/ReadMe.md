@@ -1,5 +1,7 @@
 # IBM API Connect AI Agent lab
 
+[Return to Integration AI Agent labs page](../index.md)
+
 ---
 
 # Table of Contents
@@ -62,7 +64,7 @@ A chat window will appear as below. <br>
 
 ## 3. Sample prompts <a name="prompts"></a>
 
-1. First lets explore some of the Sample prompts.   Click on the **hamburger icon**
+1\. First lets explore some of the Sample prompts.   Click on the **hamburger icon**
 
 ![alt text](./images/image-4.png)
 
@@ -73,13 +75,15 @@ You will see a list of Sample Prompts you can run. <br>
   Response: <br>
   ![alt text](./images/image-5.png)
 
-2. Show me list of integration runtimes
+2\. Show me list of integration runtimes
 ![alt text](./images/image-6.png)
 
-5.  Similarly, run more prompts to explore the capabilities of API Connect AI Agent. <br>
+3\.  Similarly, run more prompts to explore the capabilities of API Connect AI Agent. <br>
 
 <br>
 
 ## 4. Summary <a name="summary"></a>
 
 Congratulations, you have explored IBM API Connect AI Agent and performed health checks of API Connect Deployments and the objects by issuing Natural Language Prompts. <br>
+
+[Return to Integration AI Agent labs page](../index.md)

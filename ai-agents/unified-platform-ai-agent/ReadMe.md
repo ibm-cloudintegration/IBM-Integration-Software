@@ -1,5 +1,7 @@
 # IBM Integration Platform AI Agent lab
 
+[Return to Integration AI Agent labs page](../index.md)
+
 ---
 
 # Table of Contents
@@ -52,14 +54,14 @@ Acts as a guided assistant while leaving administrators fully responsible for fi
 
 Login to IBM Cloud Pak for Integration's Platform Navigator using the URL Provided, and click on the **AI** icon on the top right of the screen. <br>
 
-![alt text](image.png)
+![alt text](./images/image.png)
 
 Accept the Disclaimer if you see one. <br>
 
-![alt text](image-1.png)
+![alt text](./images/image-1.png)
 
 A chat window should be opened. <br>
-![alt text](image-4.png)
+![alt text](./images/image-4.png)
 
 <br><br>
 
@@ -69,19 +71,19 @@ Run some sample prompts: <br>
 
 1. Click on **"Health check my Cloud Pak for installation**. <br>
 
-![alt text](image-2.png)
+![alt text](./images/image-2.png)
 
 You should see details about the installation, and recommendations as you can see below that a newer Operator is available. <br>
 
-![alt text](image-3.png)
+![alt text](./images/image-3.png)
 
 2. What can you help me with? <br>
 
-![alt text](image-5.png)
+![alt text](./images/image-5.png)
 
 3. Create yaml to create nativeha queue manager? <br>
 
-![alt text](image-6.png)
+![alt text](./images/image-6.png)
 
 <br>
 
@@ -92,3 +94,5 @@ You should see details about the installation, and recommendations as you can se
 ## 4. Summary <a name="summary"></a>
 
 Congratulations, you have explored IBM MQ Agent and performed health checks of MQ Queue Managers and the objects by issuing  prompts. <br>
+
+[Return to Integration AI Agent labs page](../index.md)

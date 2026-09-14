@@ -1,6 +1,6 @@
 # App Connect - Exposing Customer Database REST API as an MCP Server in IBM Bob
 
-[Return to AI Agents lab page](../index.md)
+[Return to Integration AI Agent labs page](../index.md)
 
 ---
 
@@ -169,4 +169,4 @@ Notice that Customer 11 was created Successfully.
 Congratulations! You have exposed an APP Connect REST API as an MCP server into IBM Bob, and ran prompts to retrieve and add new customers through Natural Language prompts using IBM Bob. <br>
 <br>
 
-[Return to ACE lab page](../index.md)
+[Return to Integration AI Agent labs page](../index.md)

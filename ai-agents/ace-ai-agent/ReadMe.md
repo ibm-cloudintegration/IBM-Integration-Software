@@ -1,5 +1,7 @@
 # IBM App Connect AI Agent lab
 
+[Return to Integration AI Agent labs page](../index.md)
+
 ---
 
 # Table of Contents
@@ -64,38 +66,45 @@ A chat window will appear as below. <br>
 
 Run some sample prompts: <br>
 
-1. What can the agent do for me?
+1\. What can the agent do for me?
 
 ![alt text](./images/image-4.png)
 
-  Response: <br>
-  ![alt text](./images/image-5.png)
+Response: <br>
+![alt text](./images/image-5.png)
 
-2. Show me list of integration runtimes
+2\. Show me list of integration runtimes
+
 ![alt text](./images/image-6.png)
 
-3. List the message flows under ace-tk-customerdb-v3 runtime
+3\. List the message flows under ace-tk-customerdb-v3 runtime
+
 ![alt text](./images/image-7.png)
 
-4. Explain gen.CustomerDatabaseV3 message flow
+4\. Explain gen.CustomerDatabaseV3 message flow
+
 ![alt text](./images/image-8.png)
 
 You can see more details if you scroll down in th chat window. <br>
 ![alt text](./images/image-9.png)
 
 
-5. Are all the message flows are running?
+5\. Are all the message flows are running?
+
 This may take bit longer than the previous prompts, but you should see response. <br>
 ![alt text](./images/image-10.png)
 
-5. What is IBM App Connect?
+6\. What is IBM App Connect?
 
 ![alt text](./images/image-11.png)
 
-6.  Similarly, run more prompts to explore the capabilities of App Connect AI Agent. <br>
+6\.  Similarly, run more prompts to explore the capabilities of App Connect AI Agent. <br>
 
 <br>
 
 ## 4. Summary <a name="summary"></a>
 
 Congratulations, you have explored IBM App Connect AI Agent and performed health checks of App Connect Deployments and the objects by issuing Natural Language Prompts. <br>
+
+
+[Return to Integration AI Agent labs page](../index.md)

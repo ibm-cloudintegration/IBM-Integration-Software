@@ -1,5 +1,7 @@
 # IBM MQ AI Agent lab
 
+[Return to Integration AI Agent labs page](../index.md)
+
 ---
 
 # Table of Contents
@@ -107,3 +109,5 @@ Channels: <br>
 ## 4. Summary <a name="summary"></a>
 
 Congratulations, you have explored IBM MQ Agent and performed health checks of MQ Queue Managers and the objects by issuing  prompts. <br>
+
+[Return to Integration AI Agent labs page](../index.md)

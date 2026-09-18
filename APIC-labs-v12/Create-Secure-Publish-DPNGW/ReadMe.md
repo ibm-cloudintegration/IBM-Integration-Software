@@ -44,7 +44,10 @@ In this tutorial, you will explore the following key capabilities:
 
 
 **What is IBM DataPower Nano Gateway?**<br>
-IBM DataPower Nano Gateway is a lightweight, containerized API gateway built on the IBM DataPower technology foundation. <br>
+IBM DataPower Nano Gateway is a lightweight, ultra-fast gateway service with a 1% CPU and 20 MB footprint, built from the ground up for modern, cloud-native workloads, containerized API gateway built on the IBM DataPower technology foundation. 
+<br>
+![alt text](./images/image-49.png)
+
 
 **What It Is:** 
 A minimal-footprint API gateway designed for edge deployments, microservices environments, and resource-constrained infrastructure — as opposed to the full IBM DataPower Gateway which runs on dedicated hardware or full VMs.

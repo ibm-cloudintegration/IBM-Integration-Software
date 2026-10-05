@@ -8,7 +8,7 @@
 
 |  Topic                                | Description                                                                
 |---------------------------------------|-----------------------------------------------------------------------------|
-| [Integration Platform AI Agent](unified-platform-ai-agent/ReadMe.md)         | **Coming soon** : In this lab, you will explore IBM Integration Unified Platforms AI Agent capabilities.
+| [Integration Platform AI Agent](unified-platform-ai-agent/ReadMe.md)         | In this lab, you will explore IBM Integration Unified Platforms AI Agent capabilities.
 |---------------------------------------|-----------------------------------------------------------------------------|   
 | [MQ AI Agent](mq-ai-agent/ReadMe.md)          | In this lab, you will explore IBM MQ AI Agent capabilities.
 |---------------------------------------|-----------------------------------------------------------------------------|
@@ -16,5 +16,5 @@
 |---------------------------------------|-----------------------------------------------------------------------------|     
 | [ACE MCP Server with Bob](BOB_ACE_MCP_CustomerDatabase/ReadMe.md)       | In this lab, you will deploy Customer Database REST API into IBM App Connect on Cloud Pak for Integration, then you will create an Model Context Protocol (MCP) server in App Connect which will be used in IBM Bob.
 |-----------------------------|------------------------------------------------------------------------------------------------------------|
-| [API Connect AI Agent](api-ai-agent/ReadMe.md)       | **Coming soon** : In this lab, you will explore IBM APIC AI Agent capabilities.
+| [API Connect AI Agent](api-ai-agent/ReadMe.md)       | In this lab, you will explore IBM APIC AI Agent capabilities.
 |-----------------------------|------------------------------------------------------------------------------------------------------------|

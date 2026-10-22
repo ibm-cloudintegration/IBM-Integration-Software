@@ -58,6 +58,18 @@ Run some sample prompts: <br>
 
 1. List my queue managers with version and platform
 
+1. Do any of my queue managers have message build up?
+
+1. What is the status of each queue manager ?
+
+1. Are all my channels on mqdv03 healthy?
+
+1. Whats the reason for message build up on Q1?
+
+1. Whats the reason for messages building up on DEAD.LETTER.QUEUE provide full details.
+
+1. What does an xmitq do in MQ?
+
 1. What can you help with?
 ![alt text](./images/image-3.png)
   Response: <br>

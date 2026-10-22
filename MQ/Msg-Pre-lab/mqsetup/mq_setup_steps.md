@@ -7,7 +7,7 @@
 
 You should be logged on your VDI as *ibmuser*.
 
-1. Open a Firefox browser tab and navigate to [Github MQonCP4i](https://github.com/ibm-cloudintegration/mqoncp4i-2025).
+1. Open a Firefox browser tab and navigate to [Github MQonCP4i](https://github.com/ibm-cloudintegration/mqoncp4i).
 
 	![](./images/image108.png)
 
@@ -33,7 +33,7 @@ You should be logged on your VDI as *ibmuser*.
 1. Enter the following command to unzip the downloaded file:
 
 	```
-	unzip mqoncp4i-2025-main.zip
+	unzip mqoncp4i-main.zip
 	```
 	
 1. Change to the main directory of the zip file you unzipped.
@@ -42,7 +42,7 @@ You should be logged on your VDI as *ibmuser*.
 	x`Move the unzipped directory to your home directory with the following command:
 	
 	```
-	cd mqoncp4i-2025-main
+	cd mqoncp4i-main
 	```
 	
 	```

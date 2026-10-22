@@ -56,54 +56,59 @@ A chat window will appear as below. <br>
 
 Run some sample prompts: <br>
 
+1. List my queue managers with version and platform
+
 1. What can you help with?
 ![alt text](./images/image-3.png)
   Response: <br>
   ![alt text](./images/image-4.png)
 
-2. What queue managers can you see?
+1. What queue managers can you see?
 ![alt text](./images/image-5.png)
 
-3. Any issues with queue manager mqdv03?
+1. Any issues with queue manager mqdv03?
 ![alt text](./images/image-6.png)
 
-4. Are messages building up in FLIGHT.LANDINGS Queue on Queue Manager mqdv03?
+1. Are messages building up in FLIGHT.LANDINGS Queue on Queue Manager mqdv03?
 ![alt text](./images/image-7.png)
 
-5. Is there a problem with dead letter queue on mqdv03 <br>
+1. Is there a problem with dead letter queue on mqdv03 <br>
 ** **Note:** Answer will be bit vague, if DLQ is not defined.
 
-6. Do any queues have producers?
+1. Do any queues have producers?
 
-7. how do i define a local queue?
+1. how do i define a local queue?
 
-8. What are the versions the queue managers?
+1. What are the versions the queue managers?
 
-9. is there any message build up in queue manager mqdv03?
+1. is there any message build up in queue manager mqdv03?
 
-10.	What is the problem with APPQ on mqdv03?
+1.	What is the problem with APPQ on mqdv03?
 
-11.	Diagnose APPQ on mqdv03
+1.	Diagnose APPQ on mqdv03
 
-12. What is the name of dead letter queue for mqdv03? 
+1. What is the name of dead letter queue for mqdv03? 
 
-13. When was the last message received from amqsphac on APPQ1?
+1. When was the last message received from amqsphac on APPQ1?
 
-14. what applications are connected to cp4i-mq-mq01ha queue manager?
+1. what applications are connected to cp4i-mq-mq01ha queue manager?
 
-15. What queues are currently active?
+1. What queues are currently active?
 
-16. Show APPQ current depth?
+1. Show APPQ current depth?
 
-17. What applications are writing messages to APPQ?
+1. What applications are writing messages to APPQ?
 
-18. Is APPQ under mqdv03 queue manager full?
+1. Is APPQ under mqdv03 queue manager full?
 
-Channels: <br>
-19. Are any channels in Retrying state on mqdv03 queue manager?
 
-20. What applications are connecting to channel SB.SVRCONN on mqdv03 queue manager?
+1. Are any channels in Retrying state on mqdv03 queue manager?
 
+1. What applications are connecting to channel SB.SVRCONN on mqdv03 queue manager?
+
+1. Why channel TO.QM4 retrying on QM4
+
+1. How do I authorize user “user1” to put and get messages from "Q1"?
 <br>
 
 ## 4. Summary <a name="summary"></a>

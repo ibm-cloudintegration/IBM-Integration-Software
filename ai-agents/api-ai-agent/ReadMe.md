@@ -55,9 +55,11 @@ Right click on **apim-demo*, and click on **"Open Link in a New tab"**. <br>
 ![alt text](./images/image-1.png)
 
 Click on **AI**, in the upper right corner to open the API Assistant chat window. <br>
+
 ![alt text](./images/image-2.png)
 
 A chat window will appear as below. <br>
+
 ![alt text](./images/image-3.png)
 
 

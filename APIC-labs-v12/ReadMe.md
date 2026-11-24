@@ -33,13 +33,15 @@ IBM API Connect has several out of the box personas. Some of these personas will
 | [Test APIs - using smartgenerator](APIC12TestAPI/ReadMe.md | **COMING SOON** <br>
 |-------------------------|------------------------------------------------------------------------------------------------------------|
 
+
 <!--
+
 Creating a StepZen GraphQL API:** In this lab, we will leverage an existing REST API to create  GraphQL Proxy and then expose the GraphQL Proxy through IBM API Connect. By using GraphQL, one can Query for fields that they are interested in thus reducing the response payload and network traffic. <br><br>**Prequisite:** None.<br><br>**Primary personas**:  Shavon (API Developer) and Andre (Application Developer)
 
 
 | [Test APIs - using smartgenerator](TestAPIs-SmartGenerator/README.md)       | **Optional lab - Create test cases using Smart Generator:** In this lab, we will leverage IBM API Connect Test APIs capability to automatically generate testcases and run tests. <br>
 
 
--> 
+--> 
 
 [Return to main lab section](../index.md#lab-section)
